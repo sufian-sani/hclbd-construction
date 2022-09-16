@@ -1,0 +1,53 @@
+{% load static %}
+<!-- start service Area -->
+<section class="htc__service__area service--2 bg__gray">
+    <div class="container-fluid">
+        <div class="row" >
+            <div class="col-10 service__section__wrap clearfix">
+               <div class="row text-center">
+                    <!-- Start Single Service -->
+                    <!-- End Single Service -->
+                        <div class="row">
+                            <div class="col-10">
+                                <div class="section__title text-left">
+                                    <h2 class="title__line">Our <span class="text--theme">Products</span></h2>
+                                    <p class="text-center">On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- Start Single Service -->
+                            {% for product in products %}
+                            <div class="col-lg-4 col-xl-4 col-md-4 col-sm-6 col-12">
+                                <div class="service">
+                                    <div class="service__thumb">
+                                        <a href="#">
+                                            <img src="/media/{{product.image}}" alt="service images" style="width:85%;height:250px;">
+                                        </a>
+                                        <div class="service__hover">
+                                            <div class="service__action">
+                                                <a href="#">DETAILS</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="service__details">
+                                        <h2><a href="#">{{product.title}}</a></h2>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            <!-- End Single Service -->
+                            <!-- Start Single Service -->
+                            
+                            <!-- End Single Service -->
+                            <!-- Start Single Service -->
+                            
+                            <!-- End Single Service -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End service Area -->

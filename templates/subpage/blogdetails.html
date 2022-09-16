@@ -1,0 +1,190 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body_block %}
+
+
+<!-- Start Bradcaump area -->
+<div class="ht__bradcaump__area" data--black__overlay="6" style="background: rgba(0, 0, 0, 0) url({% static 'images/bg/5.jpg' %}) no-repeat scroll center center / cover ;">
+    <div class="ht__bradcaump__wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="bradcaump__inner text-center">
+                        <h2 class="bradcaump-title">Blog Details</h2>
+                        <nav class="bradcaump-inner">
+                          <a class="breadcrumb-item" href="/">Home</a>
+                          <span class="brd-separetor">-</span>
+                          <a class="breadcrumb-item" href="{% url 'projects' %}">Blog</a>
+                          <span class="brd-separetor">-</span>
+                          <span class="breadcrumb-item active">Blog Details</span>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Bradcaump area -->
+        
+<!-- Start Blog Area -->
+
+<section class="htc__blog__details__page blog--details ptb--150 bg__white">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-xl-9 col-md-12 col-12">
+                <div class="htc__bl__dtl__inner">
+                    <div class="blog__inner">
+                        <div class="blog__thumb">
+                            <a href="blog-details.html">
+                                <img src="/media/{{blogs.image}}" alt="blog image" style="width:795px;height:468px;">
+                            </a>
+                            <div class="blog__hover__info">
+                                <ul class="blog__meta">
+                                    <li>By : <a href="#">{{blogs.name}}</a></li>
+                                    <li>{{blogs.date}}</li>
+                                    <li><a href="#"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="htc__blog__details">
+                            <h2>{{blogs.title}}</h2>
+                            <div class="bl__dtl">
+                                {{blogs.description|safe}}
+                            </div>
+                            <div class="bl__post__share">
+                                <span>Share : </span>
+                                <ul class="bl__post__link">
+                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-tumblr"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-skype"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>              
+                    </div>
+                    <!-- Start Blog Comment -->
+                    <div class="htc__comment__area">
+                        <h2 class="title__line--3">COMMENTS</h2>
+                        <div class="htc__comment__inner">
+                            <!-- Start Single Comment -->
+                            {% for blog_comment in blog_comments %}
+                            <div class="single__comment">
+                                <div class="bl__comment__thumb">
+                                    <img src="{% static 'images/default.png' %}" alt="comment images" style="width:90px;height:90px;border-radius:50%;">
+                                </div>
+                                <div class="bl__comment__details">
+                                    <div class="bl__comment__meta">
+                                        <h2><a href="#">{{blog_comment.name}}</a></h2>
+                                    </div>
+                                    <p>{{blog_comment.message}}</p>
+                                </div>
+                            </div>
+                            <hr>
+                            {% endfor %}
+                            <!-- End Single Comment -->
+                            
+                        </div>
+                    </div>
+                    <!-- End Blog Comment -->
+                    <!-- Start Blog Comment Form -->
+                    <div class="bl__comment__form">
+
+                        <h2 class="title__line--3">LEAVE A REPLY</h2>
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <div class="bl__form__inner">
+                                <input id="" type="hidden" name="commentId" value={{blogs.id}}>
+                                <div class="single__form">
+                                    <div class="bl__input__box">
+                                        <span>Name*</span>
+                                        <input type="text" name="name" required>
+                                    </div>
+                                    <div class="bl__input__box">
+                                        <span>Email</span>
+                                        <input type="email" name="email">
+                                    </div>
+                                    <div class="bl__input__box">
+                                        <span>Subject</span>
+                                        <input type="text" name="subject">
+                                    </div>
+                                </div>
+                                <div class="single__form message">
+                                    <span>message*</span>
+                                    <textarea name="message" required></textarea>
+                                </div>
+                            </div>
+                            <div class="bl__comnt__btn">
+                                <input class="htc__btn" type="submit" value="Submit">
+                            </div>
+                        </form>
+                    </div>
+                    <!-- End Blog Comment Form -->
+                </div>
+            </div>
+            <div class="col-lg-3 col-xl-3 col-md-12 col-12 smt-40 xmt-40">
+                <div class="htc__page__sidebar">
+                    <!-- Start Single -->
+                    
+                    <!-- End Single -->
+                    <!-- Start Single -->
+                    <div class="htc__recent__post bg__gray sidebar__separator">
+                        <h2 class="sidebar__title">RECENT POST</h2>
+                        <div class="recent__post__wrap">
+                            {% for blog_last in blogs_last %}
+                            <div class="htc__single__post">
+                                <div class="post__thumb">
+                                    <a href=""><img src="/media/{{blog_last.image}}" alt="recent post img" style="width:60px;height:58px;"></a>
+                                </div>
+                                <div class="post__details">
+                                    <h4><a href="">{{blog_last.title}}</a></h4>
+                                    <div class="post__meta">
+                                        <span>{{blog_last.name}}</span>
+                                        <span>{{blogs.date|date:"M d"}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <!-- End Single -->
+                    <!-- Start Single -->
+                    <div class="htc__build__dream bg--1 sidebar__separator">
+                        <div class="build__dream__inner">
+                            <h2>WE BUILD DREEMS</h2>
+                            <div class="build__btn">
+                                <a class="htc__btn" href="{% url 'contact' %}">CONTACT US</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Blog Area -->
+
+<!-- End Blog Area -->
+
+<!-- End Blog Area -->
+
+
+
+
+        <!-- Start Newsletter Area -->
+        
+        <!-- End Newsletter Area -->
+
+    <script>
+        $('.carousel-wrapper').lightCarousel({
+            // Interval between transitions
+            interval: 6000, 
+            // If set to false, it retains the height of first slide
+            changeHeight: true, 
+            // Auto transitons
+            slideshow: true 
+            });
+    </script>
+
+{% endblock body_block %}

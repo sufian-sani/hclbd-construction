@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css_block %}
+
+    {% comment %} <link href="{% static 'lightcarouseljquery.exzoom.css' %}" rel="stylesheet"> {% endcomment %}
+    <script src="{% static 'lightcarousel/light-carousel.js' %}"></script>
+    <link href="{% static 'lightcarousel/light-carousel.css' %}" rel="stylesheet">
+    {% comment %} <script src="//code.jquery.com/jquery-1.11.2.min.js"></script> {% endcomment %}
+    
+
+
+{% endblock css_block %}
+
+{% block body_block %}
+
+
+<!-- Start Bradcaump area -->
+<div class="ht__bradcaump__area" data--black__overlay="6" style="background: rgba(0, 0, 0, 0) url({% static 'images/bg/5.jpg' %}) no-repeat scroll center center / cover ;">
+    <div class="ht__bradcaump__wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="bradcaump__inner text-center">
+                        <h2 class="bradcaump-title">Project Details</h2>
+                        <nav class="bradcaump-inner">
+                          <a class="breadcrumb-item" href="/">Home</a>
+                          <span class="brd-separetor">-</span>
+                          <a class="breadcrumb-item" href="{% url 'projects' %}">Projects</a>
+                          <span class="brd-separetor">-</span>
+                          <span class="breadcrumb-item active">Project Details</span>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Bradcaump area -->
+        
+<!-- Start Blog Area -->
+
+<section class="htc__project__details__page ptb--150 bg__white">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-xl-8 col-md-12 col-12">
+                <div class="htc__single__service">
+                    <div class="htc__single__service__tab">
+                        <!-- Start Small images -->
+
+                        <div class="ht-portfolio-pic-show">
+                            <div class="ht-portfolio-full-image tab-content">
+                                {% for service_detail_img in service_details_img %}
+                                {% if forloop.counter == 1 %}
+                                <div role="tabpanel" class="tab-pane fade show active" id="img-tab-{{ forloop.counter }}">
+                                {% else %}
+                                <div role="tabpanel" class="tab-pane fade show" id="img-tab-{{ forloop.counter }}">
+                                {% endif %}
+                                    <img src="/media/{{service_detail_img.images}}" alt="full-image">
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="ht__service__small__image nav nav-tabs clearfix">
+                            <ul role="tablist" class="prodict-det-small nav  clearfix">
+                                {% for service_detail_img in service_details_img %}
+                                {% if forloop.counter == 1 %}
+                                <li role="presentation" class="pot-small-img img-tab-{{ forloop.counter }}">
+                                {% else %}
+                                <li role="presentation" class="pot-small-img img-tab-{{ forloop.counter }}">
+                                {% endif %}
+                                    <a class="" href="#img-tab-{{ forloop.counter }}" role="tab" data-bs-toggle="tab">
+                                        <img src="/media/{{service_detail_img.images}}" alt="small-image" style="width:168px;height:112px;">
+                                    </a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                          
+
+                        <!-- End Small images --> 
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-xl-4 col-md-12 col-12">
+                <div class="single__project__rightsidebar">
+                    <!-- Start Single Item -->
+                    <div class="pro__dtl__inner bg__gray">
+                        <h2>PROJECT SHORT DETAILS</h2>
+                        <div class="pro__dtl__content">
+                            {{service_details.project_attribute|safe}}
+                        </div>
+                    </div>
+                    <!-- End Single Item -->
+                    <!-- Start Single Item -->
+                    <div class="download__project bg__gray">
+                        <h2><a href="{{service_details.file.url}}">DOWNLOAD PROJECT REPORT</a></h2>
+                    </div>
+                    <!-- End Single Item -->
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="htc__pro__desc__container">
+                    <!-- start Single Details -->
+                    
+                    {{service_details.description|safe}}
+                    
+                    <!-- End Single Details -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Blog Area -->
+
+<!-- End Blog Area -->
+
+
+
+
+        <!-- Start Newsletter Area -->
+        
+        <!-- End Newsletter Area -->
+
+    <script>
+        $('.carousel-wrapper').lightCarousel({
+            // Interval between transitions
+            interval: 6000, 
+            // If set to false, it retains the height of first slide
+            changeHeight: true, 
+            // Auto transitons
+            slideshow: true 
+            });
+    </script>
+
+{% endblock body_block %}

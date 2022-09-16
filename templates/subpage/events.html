@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load menudetails %}
+{% block body_block %}
+
+<style>
+    .service__hover::before{
+        width: 100%;
+        z-index: -1;
+        left: 0;
+    }
+</style>
+
+<!-- Start Bradcaump area -->
+<div class="ht__bradcaump__area" data--black__overlay="6" style="background: rgba(0, 0, 0, 0) url({% static 'images/bg/5.jpg' %}) no-repeat scroll center center / cover ;">
+    <div class="ht__bradcaump__wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="bradcaump__inner text-center">
+                        <h2 class="bradcaump-title">Events</h2>
+                        <nav class="bradcaump-inner">
+                          <a class="breadcrumb-item" href="/">Home</a>
+                          <span class="brd-separetor">-</span>
+                          <span class="breadcrumb-item active">Events</span>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Bradcaump area -->
+
+<!-- Start Blog Area -->
+
+
+<section class="htc__service__area service__page bg__gray ptb--100">
+    <div class="container">
+        <div class="row service__section__wrap clearfix">
+            <!-- Start Single Service -->
+            {% for event in events %}
+            <div class="col-lg-10 col-xl-10 col-md-12 col-sm-12 col-12">
+                <div class="card mb-3">
+                    <a href="{% url 'eventdetail' slug=event.slug %}">
+                    <img src="/media/{{event.image}}" class="card-img-top" alt="">
+                    <div class="card-body">
+                      <h5 class="card-title"><a href="{% url 'eventdetail' slug=event.slug %}">{{event.title}}</a></h5>
+                      <p class="card-text">{{event.description|range_filter|safe}}</p>
+                      <p class="card-text"><small class="text-muted">{{event.publish_date}}</small></p>
+                    </div>
+                    </a>
+                  </div>
+                  
+            </div>
+
+            {% endfor %}
+            <!-- End Single Service -->
+            
+        </div>
+    </div>
+</section>
+<!-- End Service Area -->
+
+
+<!-- End Blog Area -->
+
+
+
+
+
+{% endblock body_block %}

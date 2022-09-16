@@ -1,0 +1,64 @@
+<!-- Start Latest Project Area -->
+{% load static %}
+<section class="htc__latest__project__area ptb--150 bg__white text__pos">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section__title text-center">
+                    <h2 class="title__line">Product <span class="text--theme">Group</span></h2>
+                    <p>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="h1__project row mt--30">
+            <!-- Start Single Project -->
+            {% for group in groups %}
+            {% if forloop.counter == 1 %}
+            <div class="col-lg-5 col-xl-5 col-md-12 col-12">
+                <div class="project__itm foo">
+                    <div class="project__thumb">
+                        <a href="#">
+                            <img src="/media/{{group.image}}" alt="project images" style="width:445px;height:435px;">
+                        </a>
+                        <div class="project__hover__info">
+                            <div class="project__action">
+                                <h2><a href="#">{{group.title}}</a></h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            {% endif %}
+            {% endfor %}
+            <!-- End Single Project -->
+            <div class="col-lg-7 col-xl-7 col-md-12 col-12">
+                <div class="row">
+                    {% for group in groups %}
+                    {% if forloop.counter != 1 %}
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <div class="project__itm foo">
+                            <div class="project__thumb">
+                                <a href="#">
+                                    <img src="/media/{{group.image}}" alt="project images">
+                                </a>
+                                <div class="project__hover__info">
+                                    <div class="project__action">
+                                        <h2><a href="#">{{group.title}}</a></h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text__shape">
+        <h2>GROUP</h2>
+    </div>
+</section>
+<!-- End Latest Project Area -->

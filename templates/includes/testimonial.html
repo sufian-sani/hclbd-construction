@@ -1,0 +1,145 @@
+<!-- Start Testimonial Area -->
+
+{% load static %}
+{% load menudetails %}
+<section class="htc__testimonial__area ptb--130" data--gray__overlay="9.5" style="background: rgba(0, 0, 0, 0) url(images/bg/1.jpg) no-repeat fixed center center / cover ;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-xl-5 col-md-12 col-12">
+                <div class="htc__testimonial__wrap">
+                    <div class="section__title text-left">
+                        <h2 class="title__line">CLIENTS <span class="text--theme">SAYS</span></h2>
+                        
+                    </div>
+                    <div class="testimonial__activation clearfix">
+                         <!-- Start Single Testimonial -->
+                         {% for client in client_all %}
+                        <div class="testimonial">
+                            <div class="testimonial__thumb">
+                                 <img src="/media/{{client.image}}" alt="clint image">
+                            </div>
+                            <div class="testimonial__details">
+                                <div class="tes__icon">
+                                    <i class="fa fa-quote-right"></i>
+                                </div>
+                                <p>{{client.textfiled|range_filter_lite|safe}} </p>
+                                <h2><a href="{% url 'clientdetail' slug=client.slug %}">{{client.name}}</a></h2>
+                                <h4>{{client.title}}</h4>
+                            </div>
+                        </div>
+                        {% endfor %}
+                         <!-- End Single Testimonial -->
+                         
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-xl-6  offset-xl-1 col-md-12 col-12 smt-40">
+                <div class="reguest__quote">
+                    <div class="section__title text-left">
+                        <h2 class="title__line">REQUEST A <span class="text--theme">QUOTE</span></h2>
+                        <div id='submit_message' class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>QUOTE</strong> Sent successfully.
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                          </div>
+                    </div>
+                    <form id="contact-form" action="" method="POST">
+                        {% csrf_token %}
+                        <div class="clint__comment__form">
+                            <div class="single__cl__form">
+                                <input id='name' name="name" type="text" placeholder="Name" required>
+                                <input id='email' name="email" type="email" placeholder="Email">
+                            </div>
+                            <div class="single__cl__form">
+                                <input id='phone' name="phone" type="tel" placeholder="Phone" required>
+                                <input id='subject' name="subject" type="text" placeholder="Subject">
+                            </div>
+                            <div class="single__cl__message">
+                                <textarea id='message' name="message" placeholder="Massage"></textarea>
+                            </div>
+                            <div class="clint__submit__btn">
+                                <button id="btn" onclick="myFunction()" class="submit htc__btn" type="submit">
+                                    SEND MESSAGE 
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <p class=""></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Testimonial Area -->
+<script>
+    let submit_message = document.querySelector('#submit_message');
+    submit_message.style.display = "none";
+   function myFunction() {
+            document.querySelector('#contact-form').onsubmit = e => {
+            submit_message.style.display = "block";
+            e.target.reset();
+        };
+      };
+
+    {% comment %} let submit_message = document.querySelector('#submit_message');
+    submit_message.style.display = "none";
+    document.querySelector('#contact-form').onsubmit = e => {
+    document.querySelector('#btn').onclick = e => {
+        submit_message.style.display = "block";
+        e.target.reset();
+        return true;
+    }; {% endcomment %}
+</script>
+<script>
+    {% comment %} let submit_message = document.querySelector('#submit_message');
+    submit_message.style.display = "none";
+    document.querySelector('#contact-form').onsubmit = e => {
+        submit_message.style.display = "block";
+        e.target.reset();
+        return true;
+     }; {% endcomment %}
+    {% comment %} document.querySelector('#contact-form').onsubmit = e => {
+        e.target.reset();
+        return true;
+     }; {% endcomment %}
+    {% comment %} var form = document.getElementById("contact-form");
+    form.addEventListener('submit', function handleClick(e) {
+        // 👇️ if you are submitting a form
+        e.preventDefault();
+  
+        const inputs = document.querySelectorAll('#name, #email, #phone, #subject, #message');
+  
+        inputs.forEach(input => {
+          input.value = '';
+        });
+      }); {% endcomment %}
+
+    {% comment %} const btn = document.getElementById('btn');
+
+    btn.addEventListener('click', function handleClick(event) {
+      // 👇️ if you are submitting a form
+      event.preventDefault();
+
+      const inputs = document.querySelectorAll('#name, #email, #phone, #subject, #message');
+
+      inputs.forEach(input => {
+        input.value = '';
+      });
+    }); {% endcomment %}
+
+    {% comment %} submit_message.style.display = 'block' {% endcomment %}
+
+    {% comment %} let form = document.getElementsById("contact-form");
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      alert("Form Submitted!");
+    }); {% endcomment %}
+    {% comment %} const form = document.getElementsById('contact-form');
+    form.onsubmit = (e) => {
+      e.preventDefault()
+      const confirmSubmit = confirm('Are you sure you want to submit this form?');
+      if (confirmSubmit) {
+        console.log('submitted')
+      }
+    } {% endcomment %}
+  </script>
+  <!-- Body main wrapper end -->

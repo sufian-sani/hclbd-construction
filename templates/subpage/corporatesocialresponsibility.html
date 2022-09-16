@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body_block %}
+
+<style>
+    .position_style{
+        position: relative;
+    }
+    .position_style_2{
+        position: absolute;
+        top: 50%;
+        left: 12%;
+    }
+</style>
+
+<!-- Start Bradcaump area -->
+<div class="ht__bradcaump__area" data--black__overlay="6" style="background: rgba(0, 0, 0, 0) url({% static 'images/bg/5.jpg' %}) no-repeat scroll center center / cover ;">
+    <div class="ht__bradcaump__wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="bradcaump__inner text-center">
+                        <h2 class="bradcaump-title">Corporate Social Responsibility</h2>
+                        <nav class="bradcaump-inner">
+                          <a class="breadcrumb-item" href="/">Home</a>
+                          <span class="brd-separetor">-</span>
+                          <span class="breadcrumb-item active">Corporate Social Responsibility</span>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Bradcaump area -->
+        
+        <!-- Start Offer Area -->
+        <section class="htc__mission__area bg__gray my-4">
+            <div class="container">
+                <div class="htc__service__dtl">
+                    <!-- Start Single Service -->
+                    
+                    {{corporatesocialresponsibility.description|safe}}
+                    
+                    <!-- End Single Service -->
+                </div>
+            </div>
+        </section>
+
+        <!-- End Offer Area -->
+
+        <!-- Start Newsletter Area -->
+
+        <!-- End Newsletter Area -->
+
+
+
+{% endblock body_block %}

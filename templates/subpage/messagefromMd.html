@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% load menudetails %}
+
+{% block body_block %}
+
+<style>
+    .service__hover::before{
+        width: 100%;
+        z-index: -1;
+        left: 0;
+    }
+</style>
+
+<!-- Start Bradcaump area -->
+<div class="ht__bradcaump__area" data--black__overlay="6" style="background: rgba(0, 0, 0, 0) url({% static 'images/bg/5.jpg' %}) no-repeat scroll center center / cover ;">
+    <div class="ht__bradcaump__wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="bradcaump__inner text-center">
+                        <h2 class="bradcaump-title">Message From MD</h2>
+                        <nav class="bradcaump-inner">
+                          <a class="breadcrumb-item" href="/">Home</a>
+                          <span class="brd-separetor">-</span>
+                          <span class="breadcrumb-item active">Message From MD</span>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Bradcaump area -->
+
+<!-- Start Blog Area -->
+
+<section class="htc__blog__details__page ptb--150 bg__white">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-xl-9 col-md-12 col-12 order-lg-2 order-1 mx-5">
+                
+                <div class="htc__single__service">
+                    <div class="htc__service__dtl">
+                        <!-- Start Single Service -->
+
+                        {% for md_message in md_messages %}
+                        <div class="card mb-3" style="height: 300px">
+                            <div class="row g-0">
+                              <div class="col-md-4">
+                                <img src="/media/{{md_message.image}}" class="img-fluid rounded-start" alt="">
+                              </div>
+                              <div class="col-md-8">
+                                <div class="card-body">
+                                  <h5 class="card-title">{{md_message.name}}</h5>
+                                  <p class="card-text">Designation: <strong> {{md_message.title}} </strong></p>
+                                  <hr>
+                                  <p class="card-text">{{md_message.textfiled|range_filter|safe}}</p>
+                                  <br>
+                                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#{{md_message.slug}}">
+                                    Read More
+                                  </button>
+                                  <!-- Modal -->
+                                    <div class="modal fade" id="{{md_message.slug}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Message</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-dialog modal-dialog-scrollable px-2">
+                                                {{md_message.textfiled|safe}}
+                                            </div>
+                                            <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                  
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                        {% endfor %}
+
+                        
+                        <!-- Button trigger modal -->
+                        
+                        
+  
+
+                        
+                        {% comment %} {{i.textfiled|safe}} {% endcomment %}
+                        
+                        <!-- End Single Service -->
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- End Service Area -->
+
+
+<!-- End Blog Area -->
+
+
+
+
+
+{% endblock body_block %}

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body_block %}
+
+
+    <!-- Start Bradcaump area -->
+    <div class="ht__bradcaump__area" data--black__overlay="6" style="background: rgba(0, 0, 0, 0) url({% static 'images/bg/5.jpg' %}) no-repeat scroll center center / cover ;">
+        <div class="ht__bradcaump__wrap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="bradcaump__inner text-center">
+                            <h2 class="bradcaump-title">Notice</h2>
+                            <nav class="bradcaump-inner">
+                              <a class="breadcrumb-item" href="/">Home</a>
+                              <span class="brd-separetor">-</span>
+                              <span class="breadcrumb-item active">Notice</span>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Bradcaump area -->
+    <!-- Start Service Area -->
+    <section class="htc__service__area service__page bg__gray ptb--100">
+        <div class="container">
+            <div class="row service__section__wrap clearfix">
+                {% for notice in all_notice %}
+                <div class="card w-80">
+                    <div class="card-header">
+                      {{notice.publish_date}}
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title">{{notice.title}}</h5>
+                      <a href="{{notice.file.url}}" class="btn btn-primary">Download</a>
+                    </div>
+                  </div>
+                {% endfor %}
+                
+            </div>
+        </div>
+    </section>
+    <!-- End Service Area -->
+
+
+
+{% endblock body_block %}

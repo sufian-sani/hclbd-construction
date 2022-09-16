@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body_block %}
+
+<style></style>
+
+<!-- Start Bradcaump area -->
+<div class="ht__bradcaump__area" data--black__overlay="6" style="background: rgba(0, 0, 0, 0) url({% static 'images/bg/5.jpg' %}) no-repeat scroll center center / cover ;">
+    <div class="ht__bradcaump__wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="bradcaump__inner text-center">
+                        <h2 class="bradcaump-title">Press Release Details</h2>
+                        <nav class="bradcaump-inner">
+                          <a class="breadcrumb-item" href="/">Home</a>
+                          <span class="brd-separetor">-</span>
+                          <a class="breadcrumb-item" href="{% url 'news' %}">Press Release</a>
+                          <span class="brd-separetor">-</span>
+                          <span class="breadcrumb-item active">Press Release Details</span>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Bradcaump area -->
+        
+<!-- Start Blog Area -->
+<section class="htc__blog__details__page blog--details ptb--150 bg__white">
+    <div class="container">
+        <div class="row" style="margin:0 auto;">
+            <div class="col-lg-10 col-xl-10 col-md-12 col-12">
+                <div class="htc__bl__dtl__inner">
+                    <div class="blog__inner">
+                        <div class="blog__thumb">
+                            <a href="blog-details.html">
+                                <img src="/media/{{newsdetails.image}}" alt="blog image">
+                            </a>
+                            <div class="blog__hover__info">
+                                <ul class="blog__meta">
+                                    <li>{{newsdetails.publish_date}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="htc__blog__details">
+                            {{newsdetails.description|safe}}
+                            
+                            <div class="bl__post__share">
+                                <span>Share : </span>
+                                <ul class="bl__post__link">
+                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-tumblr"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-skype"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Blog Area -->
+
+
+
+
+        <!-- Start Newsletter Area -->
+        
+        <!-- End Newsletter Area -->
+
+
+
+{% endblock body_block %}

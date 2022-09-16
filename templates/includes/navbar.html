@@ -1,0 +1,173 @@
+{% load static %}
+{% load menudetails %}
+<div id="header" class="htc-header">
+    <!-- Start Header Top -->
+    <div class="htc__header__top bg__cat--1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-12">
+                    <ul class="heaher__top__left">
+                        <li><i class="fa fa-clock-o"></i>7.30 AM  -  9.30 PM</li>
+                        <li><a href="#"><i class="fa fa-phone"></i>(001)  25465  258  369</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 col-md-6 col-12">
+                    <ul class="heaher__top__left heaher__top__right" style="justify-content: end;">
+                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+
+                    
+
+            </div>
+        </div>
+    </div>
+    <!-- End Header Top -->
+    <!-- Start Mainmenu Area -->
+    <div id="sticky-header-with-topbar" class="mainmenu__wrap sticky__header">
+        <div class="container">
+            <div class="row d-flex justify-content-between">
+                <div class="col-lg-2 col-md-6">
+                    <div class="logo">
+                        <a href="/">
+                            <img src="{% static 'images/logo/hclbd-logo2.png' %}" alt="logo image" style="height:80px;">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-6 d-lg-block d-none">
+                    <nav class="main__menu__nav d-lg-block d-md-none d-none">
+                        <ul class="main__menu">
+                            {% url 'index' as url %}
+                            <li class="{% if request.path == url %}active{% endif %}"><a href={% url 'index' %}>HOME</a></li>
+                            {% url 'service' as url %}
+                            <li class="drop {% if request.path == url %}active{% endif %}"><a href="{% url 'service' %}">Services</a>
+                                <ul class="dropdown">
+                                    {% for i in request|service %}
+                                    <li><a href="{% url 'servicedetails' slug=i.slug %}">{{i.title}}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                            {% url 'products' as url %}
+                            <li class="drop {% if request.path == url %}active{% endif %}"><a href="{% url 'products' %}">Products</a>
+                                <ul class="dropdown">
+                                    {% for i in request|product %}
+                                    <li><a href="{% url 'productdetails' slug=i.slug %}">{{i.title}}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                            {% url 'aboutus' as url %}
+                            <li class="drop {% if request.path == url %}active{% endif %}"><a href="#">ABOUT</a>
+                                <ul class="dropdown">
+                                    <li><a href="{% url 'aboutus' %}">About us</a></li>
+                                    <li><a href="{% url 'client' %}">Our Clinets</a></li>
+                                    <li><a href="{% url 'team' %}">Our Team</a></li>
+                                    <li><a href="{% url 'mdmessage' %}">Messge from MD</a></li>
+                                    <li><a href="{% url 'mission-vission-goal' %}">Mission, Vission & Goal</a></li>
+                                    <li><a href="{% url 'historyandmilestones' %}">History & Milestone</a></li>
+                                </ul>
+                            </li>
+                            {% url 'supply-history' as url %}
+                            <li class="drop {% if request.path == url %}active{% endif %}"><a href="#">Profolio</a>
+                                <ul class="dropdown">
+                                    <li><a href="{% url 'supply-history' %}">Supply History with image & Project Name.</a></li>
+                                </ul>
+                            </li>
+                            {% url 'event' as url %}
+                            <li class="drop {% if request.path == url %}active{% endif %}"><a href="#">Get in touch</a>
+                                <ul class="dropdown">
+                                    <li><a href="{% url 'event' %}">Event's</a></li>
+                                    <li><a href="{% url 'notice' %}">Notice</a></li>
+                                    <li><a href="{% url 'carrer' %}">Career</a></li>
+                                    <li><a href="{% url 'news' %}">Press Release</a></li>
+                                    <li><a href="{% url 'photogallery' %}">Photo Gellery</a></li>
+                                    <li><a href="{% url 'videogallery' %}">Video Gellery</a></li>
+                                </ul>
+                            </li>
+                            {% url 'blog' as url %}
+                            <li class="drop {% if request.path == url %}active{% endif %}"><a href="{% url 'blog' %}">Blogs</a></li>
+                            {% url 'contact' as url %}
+                            <li class="{% if request.path == url %}active{% endif %}"><a href="{% url 'contact' %}">Contact us</a></li>
+
+                            {% comment %} <li><a href="{% url 'service' %}">SERVICES</a></li>
+                            <li class="drop"><a href="{% url 'projects' %}">PROJECTS</a>
+                                <ul class="dropdown">
+                                    <li><a href="projects-one.html">projects one</a></li>
+                                    <li><a href="projects-two.html">projects two</a></li>
+                                    <li><a href="projects-three.html">projects three</a></li>
+                                </ul>
+                            </li>
+                            <li class="drop"><a href="blog.html">BLOG</a>
+                                <ul class="dropdown">
+                                    <li><a href="blog.html">BLog</a></li>
+                                    <li><a href="blog-one-column.html">blog one column</a></li>
+                                    <li><a href="blog-two-column.html">blog two column</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="contact.html">CONTACT</a></li> {% endcomment %}
+                        </ul>
+                    </nav>
+                    <div class="mobile-menu clearfix d-lg-none d-md-block d-block">
+                        <nav id="mobile_dropdown">
+                            <ul>
+                                <li><a href="/">Home</a></li>
+                                <li><a href="{% url 'group' %}">Product Group</a></li>
+                                <li><a href="{% url 'products' %}">Products</a>
+                                    <ul class="">
+                                        <li><a href="#">Stone</a></li>
+                                        <li><a href="#">Sand</a></li>
+                                        <li><a href="#">RMC</a></li>
+                                        <li><a href="#">CONCREATE PRODUCT</a></li>
+                                        <li><a href="#">Construction Equipments</a></li>
+                                        <li><a href="#">Water Proofing</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">About</a>
+                                    <ul class="">
+                                        <li><a href="#">About us</a></li>
+                                        <li><a href="#">Our Clinets</a></li>
+                                        <li><a href="#">Our Team</a></li>
+                                        <li><a href="#">Messge from MD</a></li>
+                                        <li><a href="#">Mission, Vission & Goal</a></li>
+                                        <li><a href="#">History & Milestone</a></li>
+                                        <li><a href="#">History & Milestone</a></li>
+                                        <li><a href="#">Profolio</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Profolio</a></li>
+                                <li><a href="#">Get in touch</a>
+                                    <ul class="">
+                                        <li><a href="#">Event's</a></li>
+                                        <li><a href="#">Notice</a></li>
+                                        <li><a href="#">Career</a></li>
+                                        <li><a href="{% url 'news' %}">Press Release</a></li>
+                                        <li><a href="#">Photo Gellery</a></li>
+                                        <li><a href="#">Video Gellery</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Blogs</a></li>
+                                <li><a href="#">Contact us</a></li>
+
+                                {% comment %} <li><a href="{% url 'service' %}">SERVICES</a></li>
+                                <li><a href="#">PROJECTS</a></li>
+                                <li><a href="#">pages</a></li> 
+                                <li><a href="blog.html">blog</a>
+                                    <ul>
+                                        <li><a href="blog.html">BLog</a></li>
+                                        <li><a href="blog-one-column.html">blog one column</a></li>
+                                        <li><a href="blog-two-column.html">blog two column</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="contact.html">contact</a></li> {% endcomment %}
+                            </ul>
+                        </nav>
+                    </div> 
+                </div>
+            </div>
+            <div class="mobile-menu-area"></div>
+        </div>
+    </div>
+    <!-- End Mainmenu Area -->
+</div>

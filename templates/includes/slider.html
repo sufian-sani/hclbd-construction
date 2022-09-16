@@ -1,0 +1,45 @@
+<!-- Start Slider Area -->
+{% load static %}
+
+<div class="slider__container">
+    <div class="slider__activation__wrap owl-carousel owl-theme">
+        <!-- Start Single Slide -->
+        {% for slide in slider %}
+        <div class="slide slider__fixed--height slide__align--center" style="background: rgba(0, 0, 0, 0) url(/media/{{slide.background_image}}) no-repeat scroll 0 0 / cover;" data--black__overlay="6">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-lg-12">
+                        
+                        <div class="slider__inner">
+                            <h1>{{slide.title}}</h1>
+                            <p>{{slide.sub_title}}</p>
+                            <div class="slider__btn">
+                                <a class="htc__btn" href="{% url 'contact' %}">CONTACT US</a>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="htc__slider__fornt__img">
+                <img src="{% static 'images/slider/fornt-img/1.png' %}" alt="slider images">
+            </div>
+        </div>
+        {% endfor %}
+        <!-- End Single Slide -->
+    </div>
+</div>
+<!-- jquery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+
+<script>
+
+    $(".owl-carousel").owlCarousel({
+        autoplay : true,
+        autoplayTimeout: 3000,//Autoplay interval timeout.
+        loop:true,//Infinity loop. Duplicate last and first items to get loop illusion.
+        items:1 //The number of items you want to see on the screen.
+    });
+</script>
+<!-- Start Slider Area -->

@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body_block %}
+
+<style>
+    .position_style{
+        position: relative;
+    }
+    .position_style_2{
+        position: absolute;
+        top: 50%;
+        left: 12%;
+    }
+</style>
+
+<!-- Start Bradcaump area -->
+<div class="ht__bradcaump__area" data--black__overlay="6" style="background: rgba(0, 0, 0, 0) url({% static 'images/bg/5.jpg' %}) no-repeat scroll center center / cover ;">
+    <div class="ht__bradcaump__wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="bradcaump__inner text-center">
+                        <h2 class="bradcaump-title">History And Milestones Details</h2>
+                        <nav class="bradcaump-inner">
+                          <a class="breadcrumb-item" href="/">Home</a>
+                          <span class="brd-separetor">-</span>
+                          <a class="breadcrumb-item" href="#">History And Milestones</a>
+                          <span class="brd-separetor">-</span>
+                          <span class="breadcrumb-item active">History And Milestones Details</span>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Bradcaump area -->
+        
+        <!-- Start Offer Area -->
+        <section class="htc__mission__area bg__gray my-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 col-xl-7 col-md-7 col-12 position_style">
+                        <div class="htc__mission__container">
+                            <div class="single__mission position_style_2">
+                                <h2>{{historyandmilestonesdetails.title}}</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-xl-5 col-md-5 col-12">
+                        <div class="htc__mission__container">
+                            <div class="single__mission">
+                                <img src="/media/{{historyandmilestonesdetails.image}}" alt="offer img" style="height:230px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="htc__service__dtl">
+                    <!-- Start Single Service -->
+                    
+                    {{historyandmilestonesdetails.textfiled|safe}}
+                    
+                    <!-- End Single Service -->
+                </div>
+            </div>
+        </section>
+
+        <!-- End Offer Area -->
+
+        <!-- Start Newsletter Area -->
+
+        <!-- End Newsletter Area -->
+
+
+
+{% endblock body_block %}

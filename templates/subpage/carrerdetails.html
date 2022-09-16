@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body_block %}
+
+
+    <!-- Start Bradcaump area -->
+    <div class="ht__bradcaump__area" data--black__overlay="6" style="background: rgba(0, 0, 0, 0) url({% static 'images/bg/5.jpg' %}) no-repeat scroll center center / cover ;">
+        <div class="ht__bradcaump__wrap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="bradcaump__inner text-center">
+                            <h2 class="bradcaump-title">Carrer Details</h2>
+                            <nav class="bradcaump-inner">
+                              <a class="breadcrumb-item" href="/">Home</a>
+                              <span class="brd-separetor">-</span>
+                              <span class="breadcrumb-item active">Carrer Details</span>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Bradcaump area -->
+    <!-- Start Service Area -->
+    <section class="htc__service__area service__page bg__gray ptb--100">
+        <div class="container">
+            <div class="row service__section__wrap clearfix">
+               
+                <div class="row py-1 text-left">
+                    <div class="card mb-1" style="width: 100%;">
+                        <div class="card-body">
+                          <h5 class="card-title">{{carrer.title}}</h5>
+                          <p class="card-subtitle mb-2 text-muted">Published Date: {{carrer.post_date}}</p>
+                          <p class="card-text pb-4">salary: {{carrer.salary}}</p>
+                          <p class="card-text">Description:</p>
+                          <p class="">{{carrer.description|safe}}</p>
+                        </div>
+                        
+                      </div>
+            </div>
+
+            <div class="row">
+            
+                <div class="col-lg-7 text-left">
+                    <h5>Apply For:</h5>
+                    
+    
+                    <form action="{% url 'carrerdetails' slug=carrer.slug %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="hidden" name="job_id" value="{{carrer.id}}">
+                        <input type="hidden" name="job_title" value="{{carrer.title}}">
+                        
+                        <div class="form-group">
+                            <label for="nameid">Full Name</label>
+                            <input type="name" name="name" class="form-control" id="nameid" aria-describedby="">
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="exampid">Email address</label>
+                            <input type="email" name="email" class="form-control" id="exampid" aria-describedby="">
+                        </div>
+    
+    
+                        <div class="form-group">
+                            <label for="numberid">Phone Number</label>
+                            <input type="text" name="phone" class="form-control" id="numberid" aria-describedby="">
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="salaryid">Expected Salary</label>
+                            <input type="text" name="expected_salary" class="form-control" id="salaryid" aria-describedby="">
+                        </div>
+    
+                        <div class="form-group">
+                            <label>Attach your CV including your picture</label>
+                            <input type="file" name="resume" class="form-control" aria-describedby="">
+                        </div>
+    
+                        <div class="form-group">
+                            <label>Short Message (Optional)</label>
+                            <input type="text" name="massage" class="" placeholder="Write a short massage" rows="5" aria-describedby="">
+                        </div>
+    
+                        <button type="submit" class="btn btn-primary">Submit</button>
+    
+                    </form>
+    
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    <!-- End Service Area -->
+
+
+
+{% endblock body_block %}

@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% load menudetails %}
+
+{% block body_block %}
+
+<style>
+    .service__hover::before{
+        width: 100%;
+        z-index: -1;
+        left: 0;
+    }
+</style>
+
+<!-- Start Bradcaump area -->
+<div class="ht__bradcaump__area" data--black__overlay="6" style="background: rgba(0, 0, 0, 0) url({% static 'images/bg/5.jpg' %}) no-repeat scroll center center / cover ;">
+    <div class="ht__bradcaump__wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="bradcaump__inner text-center">
+                        <h2 class="bradcaump-title">Carrer</h2>
+                        <nav class="bradcaump-inner">
+                          <a class="breadcrumb-item" href="/">Home</a>
+                          <span class="brd-separetor">-</span>
+                          <span class="breadcrumb-item active">Carrer</span>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Bradcaump area -->
+
+<!-- Start Blog Area -->
+
+<section class="htc__blog__details__page ptb--150 bg__white">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-xl-9 col-md-12 col-12 order-lg-2 order-1 mx-5">
+                
+                <div class="htc__single__service">
+                    <div class="htc__service__dtl">
+                        <!-- Start Single Service -->
+
+                        {% for carre in carrer %}
+                        <div class="card mb-3" style="height: 100%">
+                            <div class="row g-0">
+                              
+                              <div class="col-md-12">
+                                <div class="card-body">
+                                  <h5 class="card-title">{{carre.title}}</h5>
+                                  <hr>
+                                  <p class="card-subtitle mb-2 text-muted">Published Date: {{carre.post_date}}</p>
+                                  <p class="card-text pb-2">salary: {{carre.salary}}</p>
+                                  <br>
+                                  <a href="{% url 'carrerdetails' slug=carre.slug %}" class="card-link btn btn-info">Show Details & Apply</a>
+                                  
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                        {% endfor %}
+
+                        
+                        <!-- Button trigger modal -->
+                        
+                        
+  
+
+                        
+                        {% comment %} {{i.textfiled|safe}} {% endcomment %}
+                        
+                        <!-- End Single Service -->
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- End Service Area -->
+
+
+<!-- End Blog Area -->
+
+
+
+
+
+{% endblock body_block %}

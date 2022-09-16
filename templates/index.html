@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body_block %}
+
+  <!-- Swiper--slider -->
+  {% include 'includes/slider.html' %}
+
+  <!-- About offer-->
+
+  {% include 'includes/offer.html' %}
+
+  <!-- What we about-->
+
+  {% include 'includes/about.html' %}
+
+  <!--service-->
+    
+  {% include 'includes/product.html' %}
+
+  <!-- Section project-->
+  {% include 'includes/product-group.html' %}
+
+  <!-- Mining machinery-->
+
+  {% include 'includes/counter.html' %}
+
+  <!-- Latest team-->
+
+  {% include 'includes/team.html' %}
+
+
+   <!-- testimonial-->
+  {% include 'includes/testimonial.html' %}
+
+
+  <!-- Section-->
+  {% comment %} {% include 'includes/blog.html' %} {% endcomment %}
+
+
+
+  <!-- Subscribe to Our Newsletter-->
+  {% comment %} {% include 'includes/newsletter.html' %} {% endcomment %}
+
+
+  {% include 'includes/contact.html' %}
+
+
+
+{% endblock body_block %}

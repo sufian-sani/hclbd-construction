@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body_block %}
+
+
+    <!-- Start Bradcaump area -->
+    <div class="ht__bradcaump__area" data--black__overlay="6" style="background: rgba(0, 0, 0, 0) url({% static 'images/bg/5.jpg' %}) no-repeat scroll center center / cover ;">
+        <div class="ht__bradcaump__wrap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="bradcaump__inner text-center">
+                            <h2 class="bradcaump-title">Mission Vission and Goal</h2>
+                            <nav class="bradcaump-inner">
+                              <a class="breadcrumb-item" href="/">Home</a>
+                              <span class="brd-separetor">-</span>
+                              <span class="breadcrumb-item active">Mission Vission and Goal</span>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Bradcaump area -->
+    <!-- Start Service Area -->
+    <section class="htc__service__area service__page bg__gray ptb--100">
+        <div class="container">
+            <div class="row service__section__wrap clearfix">
+                <!-- Start Single Service -->
+                {% comment %} {% for boardmeetings in boardmeetingsandagm %} {% endcomment %}
+                {{mission_details.description|safe}}
+                {% comment %} {% endfor %} {% endcomment %}
+                <!-- End Single Service -->
+                
+            </div>
+        </div>
+    </section>
+    <!-- End Service Area -->
+
+
+
+{% endblock body_block %}
